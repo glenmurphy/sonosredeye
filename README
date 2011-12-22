@@ -1,1 +1,5 @@
-This file was created by PyCharm 2.0.1 for binding GitHub repository
+Glen Murphy
+glen@glenmurphy.com
+
+Inspired by Brad Fitzpatrick <https://github.com/bradfitz/sonden>, this watches my Sonos and uses my Thinkflood RedEye
+to turn my receiver on and to the Sonos input when music is playing.
