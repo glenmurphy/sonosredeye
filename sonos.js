@@ -1,6 +1,7 @@
 var http = require('http');
 
 var SONOS_HOST = "10.0.1.16";
+var SONOS_PORT = 1400;
 var SONOS_DSP_PATH = "/status/proc/driver/audio/dsp";
 var SONOS_POLL_INTERVAL = 2000;
 var REDEYE_HOST = "10.0.1.19";
@@ -46,7 +47,7 @@ function Sonos() {
 }
 
 Sonos.prototype.poll = function () {
-  fetchPage(SONOS_HOST, 1400, SONOS_DSP_PATH, this.handlePoll.bind(this));
+  fetchPage(SONOS_HOST, SONOS_PORT, SONOS_DSP_PATH, this.handlePoll.bind(this));
 };
 
 Sonos.prototype.handlePoll = function (data) {
@@ -63,9 +64,9 @@ Sonos.prototype.handlePoll = function (data) {
 Sonos.prototype.playbackBegun = function () {
   this.playing = true;
   console.log("Begun");
-  fetchPage(REDEYE_HOST, REDEYE_PORT, REDEYE_PATH_TURNON, null);
+  fetchPage(REDEYE_HOST, REDEYE_PORT, REDEYE_PATH_TURNON);
   setTimeout(function () {
-    fetchPage(REDEYE_HOST, REDEYE_PORT, REDEYE_PATH_INPUT, null);
+    fetchPage(REDEYE_HOST, REDEYE_PORT, REDEYE_PATH_INPUT);
   }, REDEYE_COMMAND_DELAY);
 };
 
