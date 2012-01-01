@@ -1,5 +1,39 @@
-Glen Murphy
-glen@glenmurphy.com
+SonosRedeye
+http://github.com/glenmurphy/sonosredeye
 
-Inspired by Brad Fitzpatrick <https://github.com/bradfitz/sonden>, this watches my Sonos and uses my Thinkflood RedEye
-to turn my receiver on and to the Sonos input when music is playing.
+-------------------------------------------------------------------------------
+Description
+
+Inspired by Brad Fitzpatrick <https://github.com/bradfitz/sonden>, this NodeJS
+script watches my Sonos and uses my Thinkflood RedEye to turn my receiver on
+and to the Sonos input when music is playing.
+
+-------------------------------------------------------------------------------
+Configuration
+
+You'll need to fill out the IP addresses of your devices in the source.
+
+To get the REDEYE_PATHs, you need to download the control database from 
+your RedEye <http://[REDEYEIP]/setup/maintenance.html>, then use 
+SQLLiteExplorer to find the 'signal' value for the commands you need
+in the 'command' table. The final URL is constructed using that value
+in the following:
+
+  "/cgi-bin/play_iph.sh?/[SIGNALPATH]%201"
+
+You're meant to be able to use the iOS app to extract these paths, but I could
+never get that to work.
+
+-------------------------------------------------------------------------------
+Installation
+
+You can run this as a service on Windows using NSSM <http://nssm.cc>:
+
+    nssm.exe install sonos-node "C:\path\to\node.exe" c:\path\to\sonos.js
+    net start sonos-node
+
+-------------------------------------------------------------------------------
+Author
+
+Glen Murphy
+http://glenmurphy.com/
