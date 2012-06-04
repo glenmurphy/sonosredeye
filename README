@@ -29,9 +29,16 @@ Installation
 
 You can run this as a service on Windows using NSSM <http://nssm.cc>:
 
-    nssm.exe install sonos-node "C:\path\to\node.exe" c:\path\to\sonos.js
-    net start sonos-node
+  nssm.exe install sonos-node "C:\path\to\node.exe" c:\path\to\sonos.js
+  net start sonos-node
 
+To run on Linux, you'll need to modify sonos_upstart to point to the right
+user and directory, then do:
+
+  $ sudo apt-get install upstart
+  $ sudo cp ./sonos_upstart.conf /etc/init/
+  $ sudo start sonos_upstart
+  
 -------------------------------------------------------------------------------
 Author
 
